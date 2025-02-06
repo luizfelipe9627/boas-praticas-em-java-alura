@@ -3,10 +3,10 @@ package br.com.alura.adopet.api.controller;
 import br.com.alura.adopet.api.dto.AprovacaoAdocaoDto;
 import br.com.alura.adopet.api.dto.ReprovacaoAdocaoDto;
 import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
-import br.com.alura.adopet.api.model.Adocao;
+import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.service.AdocaoService;
 import jakarta.validation.Valid;
-import jakarta.validation.ValidationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +34,7 @@ public class AdocaoController {
         try {
             this.adocaoService.solicitar(dto); // O método solicitar do serviço é chamado, passando o objeto adocao como parâmetro.
             return ResponseEntity.ok("Adoção solicitada com sucesso!"); // A resposta da requisição é uma mensagem de sucesso.
-        } catch (ValidationException e) {
+        } catch (ValidacaoException e) {
             return ResponseEntity.badRequest().body(e.getMessage()); // A resposta da requisição é uma mensagem de erro.
         }
     }
@@ -51,7 +51,7 @@ public class AdocaoController {
         try {
             this.adocaoService.aprovar(dto); // O método aprovar do serviço é chamado, passando o objeto adocao como parâmetro.
             return ResponseEntity.ok("Adoção aprovada com sucesso!"); // A resposta da requisição é uma mensagem de sucesso.
-        } catch (ValidationException e) {
+        } catch (ValidacaoException e) {
             return ResponseEntity.badRequest().body(e.getMessage()); // A resposta da requisição é uma mensagem de erro.
         }
     }
@@ -67,7 +67,7 @@ public class AdocaoController {
         try {
             this.adocaoService.reprovar(dto); // O método reprovar do serviço é chamado, passando o objeto adocao como parâmetro.
             return ResponseEntity.ok("Adoção reprovada com sucesso!"); // A resposta da requisição é uma mensagem de sucesso.
-        } catch (ValidationException e) {
+        } catch (ValidacaoException e) {
             return ResponseEntity.badRequest().body(e.getMessage()); // A resposta da requisição é uma mensagem de erro.
         }
     }

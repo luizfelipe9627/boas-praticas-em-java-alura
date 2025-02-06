@@ -18,7 +18,7 @@ public class ValidacaoPetDisponivel implements ValidacaoSolicitacaoAdocao {
 
     // O método validar recebe um objeto do tipo SolicitacaoAdocaoDto como parâmetro e é responsável por validar se um pet está disponível para adoção.
     public void validar(SolicitacaoAdocaoDto dto) {
-        Pet pet = repository.getReferenceById(dto.idPet()); // O método findById do repositório é utilizado para buscar um pet pelo idAbrigo.
+        Pet pet = repository.getReferenceById(dto.idPet()); // O método findById do repositório é utilizado para buscar um pet pelo idPet.
 
         // Se o pet já foi adotado, executa o bloco de código do if.
         if (pet.getAdotado()) {

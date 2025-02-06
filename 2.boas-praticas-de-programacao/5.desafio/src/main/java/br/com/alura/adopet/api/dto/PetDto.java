@@ -7,9 +7,9 @@ import jakarta.validation.constraints.NotNull;
 
 // Criado um DTO para o pet responsável por receber os dados do pet.
 public record PetDto(
-        // A anotação @NotNull indica que o atributo idAdocao não pode ser nulo.
+        // A anotação @NotNull indica que o atributo idPet não pode ser nulo.
         @NotNull
-        Long idPet, // Criado um atributo idPet do tipo Long responsável por identificar o pet.
+        Long id, // Criado um atributo idPet do tipo Long responsável por identificar o pet.
         // Cria a coluna tipo na tabela pets.
         @NotNull
         TipoPet tipo, // Criado um atributo tipo do tipo TipoPet responsável por armazenar o tipo do pet.
@@ -25,6 +25,6 @@ public record PetDto(
 ) {
     // O construtor da classe PetDto é responsável por receber os dados do pet.
     public PetDto(Pet pet) {
-        this(pet.getId(), pet.getTipo(), pet.getNome(), pet.getRaca(), pet.getIdade()); // O construtor recebe um objeto do tipo Pet e atribui os valores dos atributos idAbrigo, tipo, nome, raca e idade do pet aos atributos idAbrigo, tipo, nome, raca e idade do DTO.
+        this(pet.getId(), pet.getTipo(), pet.getNome(), pet.getRaca(), pet.getIdade()); // O construtor recebe um objeto do tipo Pet e atribui os valores dos atributos idPet, tipo, nome, raca e idade do pet aos atributos idPet, tipo, nome, raca e idade do DTO.
     }
 }

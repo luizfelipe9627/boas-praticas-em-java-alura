@@ -53,7 +53,7 @@ class AbrigoServiceTest {
         this.dto = new CadastroAbrigoDto("Abrigo xpe", "11990023902", "abrigoxpe@email.com"); // Está instanciando a classe CadastroAbrigoDto e guardando na variável dto com os dados do abrigo que vai ser cadastrado.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
-        abrigoService.cadatrar(dto); // Está chamando o método cadatrar() do serviço fazendo o cadastro do abrigo.
+        abrigoService.cadastrar(dto); // Está chamando o método cadastrar do serviço fazendo o cadastro do abrigo.
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
         // O método then() verifica se o método save() foi chamado no repositório.
@@ -69,7 +69,7 @@ class AbrigoServiceTest {
         given(abrigoRepository.existsByNomeOrTelefoneOrEmail(dto.nome(), dto.telefone(), dto.email())).willReturn(true); // Está dizendo que quando o método existsByNomeOrTelefoneOrEmail() for chamado no abrigoRepository com os dados do abrigo, ele vai retornar true.
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
-        assertThrows(ValidacaoException.class, () -> abrigoService.cadatrar(dto)); // Verifica se o método cadatrar() do serviço lança uma exceção do tipo ValidacaoException, se sim, o teste passa.
+        assertThrows(ValidacaoException.class, () -> abrigoService.cadastrar(dto)); // Verifica se o método cadatrar() do serviço lança uma exceção do tipo ValidacaoException, se sim, o teste passa.
     }
 
     // A anotação @Test indica que o método abaixo é um teste e deve ser executado pelo JUnit
@@ -78,10 +78,10 @@ class AbrigoServiceTest {
     void deveriaListarPetsDoAbrigoAtravesDoNome() {
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
         String nome = "AuAu"; // Está guardando o nome do pet que vai ser listado.
-        given(abrigoRepository.findByNome(nome)).willReturn(Optional.of(abrigo)); // Está dizendo que quando o método findByNome() for chamado no abrigoRepository com o nome do pet, ele vai retornar o abrigo.
+        given(abrigoRepository.findByNome(nome)).willReturn((abrigo)); // Está dizendo que quando o método findByNome() for chamado no abrigoRepository com o nome do pet, ele vai retornar o abrigo.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
-        abrigoService.listarPetsDoAbrigo(nome); // Está chamando o método listarPetsDoAbrigo() do serviço passando o nome do abrigo.
+        abrigoService.listar(nome); // Está chamando o método listar do serviço passando o nome do abrigo.
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
         // O método then() verifica se o método findByAbrigo() foi chamado no repositório.
@@ -97,7 +97,7 @@ class AbrigoServiceTest {
         given(abrigoRepository.findById(id)).willReturn(Optional.of(abrigo)); // Está dizendo que quando o método findByNome() for chamado no abrigoRepository com o id do pet, ele vai retornar o abrigo.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
-        abrigoService.listarPetsDoAbrigo(String.valueOf(id)); // Está chamando o método listarPetsDoAbrigo() do serviço passando o id do abrigo.
+        abrigoService.listar(String.valueOf(id)); // Está chamando o método listar do serviço passando o id do abrigo.
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
         // O método then() verifica se o método findByAbrigo() foi chamado no repositório.
@@ -110,7 +110,7 @@ class AbrigoServiceTest {
     void deveriaCarregarAbrigoAtravesDoNome() {
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
         String nome = "Abrigo xpe"; // Está guardando o nome do abrigo que vai ser carregado.
-        given(abrigoRepository.findByNome(nome)).willReturn(Optional.of(abrigo)); // Está dizendo que quando o método findByNome() for chamado no abrigoRepository com o nome do abrigo, ele vai retornar o abrigo.
+        given(abrigoRepository.findByNome(nome)).willReturn(abrigo); // Está dizendo que quando o método findByNome() for chamado no abrigoRepository com o nome do abrigo, ele vai retornar o abrigo.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
         // O método then() verifica se o método findByNome() foi chamado no repositório.

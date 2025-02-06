@@ -1,13 +1,12 @@
-CREATE TABLE adocoes
-(
-    id                   BIGSERIAL    NOT NULL,
-    data                 TIMESTAMP    NOT NULL,
-    tutor_id             BIGINT       NOT NULL,
-    pet_id               BIGINT       NOT NULL,
-    motivo               VARCHAR(255) NOT NULL,
-    status               VARCHAR(100) NOT NULL,
-    justificativa_status VARCHAR(255),
-    PRIMARY KEY (id),
-    CONSTRAINT fk_adocoes_tutor_id FOREIGN KEY (tutor_id) REFERENCES tutores (id),
-    CONSTRAINT fk_adocoes_pet_id FOREIGN KEY (pet_id) REFERENCES pets (id)
+create table adocoes(
+    id bigint not null auto_increment,
+    data datetime not null,
+    tutor_id bigint not null,
+    pet_id bigint not null,
+    motivo varchar(255) not null,
+    status varchar(100) not null,
+    justificativa_status varchar(255),
+    primary key(id),
+    constraint fk_adocoes_tutor_id foreign key(tutor_id) references tutores(id),
+    constraint fk_adocoes_pet_id foreign key(pet_id) references pets(id)
 );

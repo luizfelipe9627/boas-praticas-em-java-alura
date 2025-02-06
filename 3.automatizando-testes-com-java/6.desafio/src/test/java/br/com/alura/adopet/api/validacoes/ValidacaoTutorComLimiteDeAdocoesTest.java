@@ -54,7 +54,7 @@ class ValidacaoTutorComLimiteDeAdocoesTest {
     void deveriaPermitirSolicitacaoDeAdocaoTutorNaoAtingiuLimiteDe5Adocoes() {
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
         adocao = new Adocao(tutor, pet, "Motivo qualquer"); // Cria uma nova adoção.passando o tutor, o pet e um motivo qualquer.
-        adocao.marcarComoAprovada(); // Marca a adoção como aprovada.
+        adocao.marcarComoAprovado(); // Marca a adoção como aprovada.
         listaDeAdocoes.add(adocao); // Adiciona a adoção na lista de adoções.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
@@ -71,7 +71,7 @@ class ValidacaoTutorComLimiteDeAdocoesTest {
     void naoDeveriaPermitirSolicitacaoDeAdocaoTutorAtingiuLimiteDe5Adocoes() {
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
         adocao = new Adocao(tutor, pet, "Motivo qualquer"); // Cria uma nova adoção.passando o tutor, o pet e um motivo qualquer.
-        adocao.marcarComoAprovada(); // Marca a adoção como aprovada.
+        adocao.marcarComoAprovado(); // Marca a adoção como aprovada.
 
         // Adiciona a adoção na lista de adoções 5 vezes para simular que o tutor atingiu o limite de 5 adoções.
         for (int i = 0; i < 5; i++) {

@@ -14,11 +14,11 @@ import java.util.Objects;
 // A classe Abrigo é uma classe de modelo que representa um abrigo de animais.
 public class Abrigo {
 
-    // A anotação @Id indica que o atributo idAbrigo é a chave primária da tabela abrigos.
+    // A anotação @Id indica que o atributo idPet é a chave primária da tabela abrigos.
     @Id
-    // A anotação @GeneratedValue indica que o valor do atributo idAbrigo é gerado automaticamente pelo banco de dados.
+    // A anotação @GeneratedValue indica que o valor do atributo idPet é gerado automaticamente pelo banco de dados.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Criado um atributo idAbrigo do tipo Long responsável por identificar o abrigo.
+    private Long id; // Criado um atributo idPet do tipo Long responsável por identificar o abrigo.
 
     private String nome; // Criado um atributo nome do tipo String responsável por armazenar o nome do abrigo.
 
@@ -47,12 +47,12 @@ public class Abrigo {
     @Override
     // O método hashCode é responsável por retornar um valor numérico que representa o objeto.
     public int hashCode() {
-        return Objects.hash(id); // Retorna o hash do idAbrigo do abrigo.
+        return Objects.hash(id); // Retorna o hash do idPet do abrigo.
     }
 
-    // O método getId é responsável por retornar o idAbrigo do abrigo.
+    // O método getId é responsável por retornar o idPet do abrigo.
     public Long getId() {
-        return id; // Retorna o idAbrigo do abrigo.
+        return id; // Retorna o idPet do abrigo.
     }
 
     // O método getNome é responsável por retornar o nome do abrigo.

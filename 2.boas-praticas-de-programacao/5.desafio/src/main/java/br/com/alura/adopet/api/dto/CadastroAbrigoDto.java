@@ -1,6 +1,7 @@
 package br.com.alura.adopet.api.dto;
 
 import br.com.alura.adopet.api.model.Abrigo;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
@@ -16,6 +17,8 @@ public record CadastroAbrigoDto(
         String telefone, // Criado um atributo telefone do tipo String responsável por armazenar o telefone do abrigo.
         // A anotação @NotBlank indica que o atributo email não pode ser nulo ou vazio.
         @NotBlank
+        // A anotação @Email indica que o atributo email deve seguir o padrão de email.
+        @Email
         String email // Criado um atributo email do tipo String responsável por armazenar o email do abrigo.
 ) {
     // O construtor da classe CadastroAbrigoDto é responsável por receber os dados do abrigo.

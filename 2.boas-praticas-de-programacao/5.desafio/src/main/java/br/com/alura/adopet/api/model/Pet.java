@@ -15,11 +15,11 @@ import java.util.Objects;
 // A classe Pet é uma classe de modelo que representa um pet.
 public class Pet {
 
-    // A anotação @Id indica que o atributo idAbrigo é a chave primária da tabela pets.
+    // A anotação @Id indica que o atributo idPet é a chave primária da tabela pets.
     @Id
-    // A anotação @GeneratedValue indica que o valor do atributo idAbrigo é gerado automaticamente pelo banco de dados.
+    // A anotação @GeneratedValue indica que o valor do atributo idPet é gerado automaticamente pelo banco de dados.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Criado um atributo idAbrigo do tipo Long responsável por identificar o pet.
+    private Long id; // Criado um atributo idPet do tipo Long responsável por identificar o pet.
 
     // A anotação @Enumerated indica que o atributo tipo é um enum do tipo string.
     @Enumerated(EnumType.STRING)
@@ -75,12 +75,12 @@ public class Pet {
     @Override
     // O método hashCode é responsável por retornar o hash do objeto.
     public int hashCode() {
-        return Objects.hash(id); // Retorna o hash do idAbrigo do pet.
+        return Objects.hash(id); // Retorna o hash do idPet do pet.
     }
 
-    // O método getId é responsável por retornar o idAbrigo do pet.
+    // O método getId é responsável por retornar o idPet do pet.
     public Long getId() {
-        return id; // Retorna o idAbrigo do pet.
+        return id; // Retorna o idPet do pet.
     }
 
     // O método getTipo é responsável por retornar o tipo do pet.
@@ -111,6 +111,11 @@ public class Pet {
     // O método getRaca é responsável por retornar a raça do pet.
     public Abrigo getAbrigo() {
         return abrigo; // Retorna o abrigo do pet.
+    }
+
+    // O método getPeso é responsável por retornar o peso do pet.
+    public Float getPeso() {
+        return peso; // Retorna o peso do pet.
     }
 
     // O método setAbrigo é responsável por definir o abrigo do pet.

@@ -12,11 +12,11 @@ import java.util.Objects;
 // A classe Adocao é uma classe de modelo que representa uma adoção de um pet.
 public class Adocao {
 
-    // A anotação @Id indica que o atributo idAbrigo é a chave primária da tabela abrigos.
+    // A anotação @Id indica que o atributo idPet é a chave primária da tabela abrigos.
     @Id
-    // A anotação @GeneratedValue indica que o valor do atributo idAbrigo é gerado automaticamente pelo banco de dados.
+    // A anotação @GeneratedValue indica que o valor do atributo idPet é gerado automaticamente pelo banco de dados.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Criado um atributo idAbrigo do tipo Long responsável por identificar o abrigo.
+    private Long id; // Criado um atributo idPet do tipo Long responsável por identificar o abrigo.
 
     private LocalDateTime data; // Criado um atributo data do tipo LocalDateTime responsável por armazenar a data da adoção.
 
@@ -72,7 +72,7 @@ public class Adocao {
     @Override
     // O método hashCode é responsável por retornar um valor numérico que representa o objeto.
     public int hashCode() {
-        return Objects.hash(id); // Retorna o hash do idAbrigo da adoção.
+        return Objects.hash(id); // Retorna o hash do idPet da adoção.
     }
 
     // O método getDados é responsável por retornar a data da adoção.
@@ -103,6 +103,11 @@ public class Adocao {
     // O método getJustificativaStatus é responsável por retornar a justificativa do status da adoção.
     public String getJustificativaStatus() {
         return justificativaStatus; // Retorna a justificativa do status da adoção.
+    }
+
+    // O método getMotivo é responsável por retornar o motivo da adoção.
+    public String getMotivo() {
+        return motivo; // Retorna o motivo da adoção.
     }
 
 }

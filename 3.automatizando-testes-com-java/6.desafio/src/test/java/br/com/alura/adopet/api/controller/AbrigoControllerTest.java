@@ -126,7 +126,7 @@ class AbrigoControllerTest {
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
         String id = "2"; // Cria uma string com o id do abrigo.
 
-        given(abrigoService.listarPetsDoAbrigo(id)).willThrow(ValidacaoException.class); // Simula uma exceção ao chamar o método listarPetsDoAbrigo do abrigoService.
+        given(abrigoService.listar(id)).willThrow(ValidacaoException.class); // Simula uma exceção ao chamar o método listarPetsDoAbrigo do abrigoService.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
         // O método perform do mockMvc é usado para fazer uma requisição HTTP.
@@ -163,7 +163,7 @@ class AbrigoControllerTest {
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
         String name = "bidu"; // Cria uma string com o nome do pet.
 
-        given(abrigoService.listarPetsDoAbrigo(name)).willThrow(ValidacaoException.class); // Simula uma exceção ao chamar o método listarPetsDoAbrigo do abrigoService.
+        given(abrigoService.listar(name)).willThrow(ValidacaoException.class); // Simula uma exceção ao chamar o método listarPetsDoAbrigo do abrigoService.
 
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
         // O método perform do mockMvc é usado para fazer uma requisição HTTP.

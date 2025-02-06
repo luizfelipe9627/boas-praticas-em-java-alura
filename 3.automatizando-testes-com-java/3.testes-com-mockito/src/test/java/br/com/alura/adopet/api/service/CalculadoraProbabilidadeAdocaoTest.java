@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 
 class CalculadoraProbabilidadeAdocaoTest {
 
+    // A anotação @Test indica que o método abaixo é um teste e deve ser executado pelo JUnit
     @Test
-        // A anotação @Test indica que o método abaixo é um teste e deve ser executado pelo JUnit
-        // Criado um método de teste chamado deveriaRetornarProbabilidadeAltaParaPetComIdadeBaixaEPesoBaixo, que testa a probabilidade de adoção de um pet utilizando um mock de pet com 4 anos e 4kg que o resultado esperado é ALTA.
+    // Criado um método de teste chamado deveriaRetornarProbabilidadeAltaParaPetComIdadeBaixaEPesoBaixo, que testa a probabilidade de adoção de um pet utilizando um mock de pet com 4 anos e 4kg que o resultado esperado é ALTA.
     void deveriaRetornarProbabilidadeAltaParaPetComIdadeBaixaEPesoBaixo() {
 
         // ARRANGE -> ARRANGE é a parte responsável por preparar o cenário do teste.
@@ -21,7 +21,7 @@ class CalculadoraProbabilidadeAdocaoTest {
         Abrigo abrigo = new Abrigo(new CadastroAbrigoDto("Abrigo feliz", "94999999999", "abrigofeliz@email.com.br"));
 
         // Está instanciando a classe Pet e guardando na variável pet com os dados do pet que vai ser criado.
-        Pet pet = new Pet(new CadastroPetDto(TipoPet.GATO, "Miau", "Siames", 4, "Cinza", 4.0f), abrigo);
+        Pet pet = new Pet(abrigo, new CadastroPetDto(TipoPet.GATO, "Miau", "Siames", 4, "Cinza", 4.0f));
 
         CalculadoraProbabilidadeAdocao calculadora = new CalculadoraProbabilidadeAdocao(); // Está instanciando a classe CalculadoraProbabilidadeAdocao e guardando na variável calculadora
 
@@ -32,9 +32,9 @@ class CalculadoraProbabilidadeAdocaoTest {
         Assertions.assertEquals(ProbabilidadeAdocao.ALTA, probabilidade); // O método assertEquals verifica se o valor esperado é igual ao valor retornado, recebe dois parâmetros, o valor esperado e o valor retornado, se forem iguais o teste passa, se forem diferentes o teste falha.
     }
 
+    // A anotação @Test indica que o método abaixo é um teste e deve ser executado pelo JUnit
     @Test
-        // A anotação @Test indica que o método abaixo é um teste e deve ser executado pelo JUnit
-        // Criado um método de teste chamado deveriaRetornarProbabilidadeMediaParaPetComIdadeAltaEPesoBaixo que testa a probabilidade de adoção de um pet utilizando um mock de pet com 15 anos e 4kg e o resultado esperado é MEDIA.
+    // Criado um método de teste chamado deveriaRetornarProbabilidadeMediaParaPetComIdadeAltaEPesoBaixo que testa a probabilidade de adoção de um pet utilizando um mock de pet com 15 anos e 4kg e o resultado esperado é MEDIA.
     void deveriaRetornarProbabilidadeMediaParaPetComIdadeAltaEPesoBaixo() {
         // Idade 15 anos e 4kg
         // Resultado deve ser: MEDIA
@@ -44,7 +44,7 @@ class CalculadoraProbabilidadeAdocaoTest {
         Abrigo abrigo = new Abrigo(new CadastroAbrigoDto("Abrigo feliz", "94999999999", "abrigofeliz@email.com.br"));
 
         // Está instanciando a classe Pet e guardando na variável pet com os dados do pet que vai ser criado.
-        Pet pet = new Pet(new CadastroPetDto(TipoPet.GATO, "Miau", "Siames", 15, "Cinza", 4.0f), abrigo);
+        Pet pet = new Pet(abrigo, new CadastroPetDto(TipoPet.GATO, "Miau", "Siames", 15, "Cinza", 4.0f));
 
         CalculadoraProbabilidadeAdocao calculadora = new CalculadoraProbabilidadeAdocao(); // Está instanciando a classe CalculadoraProbabilidadeAdocao e guardando na variável calculadora
 

@@ -18,7 +18,7 @@ public class ValidacaoTutorComAdocaoEmAndamento implements ValidacaoSolicitacaoA
 
     // O método validar recebe um objeto do tipo SolicitacaoAdocaoDto como parâmetro e é responsável por validar se um pet possui uma adoção em andamento.
     public void validar(SolicitacaoAdocaoDto dto) {
-        boolean petTemAdoacaoEmAndamento = adocaoRepository.existsByPetIdAndStatus(dto.idPet(), StatusAdocao.AGUARDANDO_AVALIACAO); // A variável petTemAdoacaoEmAndamento recebe o resultado da chamada do método existsByPetIdAndStatus do repositório de Adocao passando o idAbrigo do pet e o status AGUARDANDO_AVALIACAO como parâmetros.
+        boolean petTemAdoacaoEmAndamento = adocaoRepository.existsByPetIdAndStatus(dto.idPet(), StatusAdocao.AGUARDANDO_AVALIACAO); // A variável petTemAdoacaoEmAndamento recebe o resultado da chamada do método existsByPetIdAndStatus do repositório de Adocao passando o idPet do pet e o status AGUARDANDO_AVALIACAO como parâmetros.
 
         // Se a variável petTemAdoacaoEmAndamento for verdadeira, então é lançada uma exceção.
         if (petTemAdoacaoEmAndamento) {

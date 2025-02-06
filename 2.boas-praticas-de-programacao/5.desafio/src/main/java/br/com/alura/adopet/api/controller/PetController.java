@@ -1,11 +1,8 @@
 package br.com.alura.adopet.api.controller;
 
 import br.com.alura.adopet.api.dto.PetDto;
-import br.com.alura.adopet.api.model.Pet;
-import br.com.alura.adopet.api.repository.PetRepository;
-import br.com.alura.adopet.api.service.AbrigoService;
 import br.com.alura.adopet.api.service.PetService;
-import jakarta.validation.ValidationException;
+import br.com.alura.adopet.api.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +29,7 @@ public class PetController {
         try {
             List<PetDto> pets = petService.listar(); // O método listar do serviço é chamado responsável por listar os pets.
             return ResponseEntity.ok(pets); // O método ok do ResponseEntity é utilizado para retornar a lista de pets.
-        } catch (ValidationException e) {
+        } catch (ValidacaoException e) {
             return ResponseEntity.notFound().build(); // A resposta da requisição é uma mensagem de erro.
         }
     }

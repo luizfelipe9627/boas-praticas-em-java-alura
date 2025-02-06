@@ -22,7 +22,7 @@ public class Tutor {
     @Id
     // A anotação @GeneratedValue indica que o valor do atributo é gerado automaticamente.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // O idAbrigo é o identificador do tutor.
+    private Long id; // O idPet é o identificador do tutor.
 
     private String nome; // O nome é o nome do tutor.
 
@@ -62,10 +62,10 @@ public class Tutor {
     // A anotação @Override indica que o método hashCode foi sobrescrito.
     @Override
     public int hashCode() {
-        return Objects.hash(id); // Retorna o hash do idAbrigo do tutor.
+        return Objects.hash(id); // Retorna o hash do idPet do tutor.
     }
 
-    // O método getId é responsável por retornar o idAbrigo do tutor.
+    // O método getId é responsável por retornar o idPet do tutor.
     public String getNome() {
         return nome; // Retorna o nome do tutor.
     }

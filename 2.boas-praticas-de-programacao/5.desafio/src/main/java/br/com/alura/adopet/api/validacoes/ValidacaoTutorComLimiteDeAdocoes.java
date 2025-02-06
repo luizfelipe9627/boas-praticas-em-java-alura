@@ -28,12 +28,11 @@ public class ValidacaoTutorComLimiteDeAdocoes implements ValidacaoSolicitacaoAdo
     // O método validar recebe um objeto do tipo SolicitacaoAdocaoDto como parâmetro e é responsável por validar se um pet possui uma adoção em andamento.
     public void validar(SolicitacaoAdocaoDto dto) {
         List<Adocao> adocoes = adocaoRepository.findAll(); // O método findAll do repositório é utilizado para buscar todas as adoções registradas no sistema.
-        Tutor tutor = tutorRepository.getReferenceById(dto.idTutor()); // O método findById do repositório é utilizado para buscar um tutor pelo idAbrigo.
+        Tutor tutor = tutorRepository.getReferenceById(dto.idTutor()); // O método findById do repositório é utilizado para buscar um tutor pelo idPet.
+        int contador = 0; // A variável contador é inicializada com o valor 0.
 
         // Executa um loop for para percorrer a lista de adoções.
         for (Adocao a : adocoes) {
-            int contador = 0; // A variável contador é inicializada com o valor 0.
-
             // Se o tutor da adoção for igual ao tutor de uma adoção já registrada e o status da adoção for APROVADO, executa o bloco de código do if.
             if (a.getTutor() == tutor && a.getStatus() == StatusAdocao.APROVADO) {
                 contador = contador + 1; // O contador é incrementado em 1.

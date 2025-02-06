@@ -4,6 +4,7 @@ import br.com.alura.adopet.api.dto.SolicitacaoAdocaoDto;
 import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.model.StatusAdocao;
 import br.com.alura.adopet.api.repository.AdocaoRepository;
+import br.com.alura.adopet.api.repository.TutorRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 
 // Teste de unidade -> O teste de unidade é um tipo de teste que não depende de recursos externos, como banco de dados, rede, etc. Ele testa uma unidade de código, que pode ser um método, uma classe, etc.
@@ -25,6 +27,10 @@ class ValidacaoPetComAdocaoEmAndamentoTest {
     // A anotação @Mock indica que a variável abaixo é um mock, ou seja, um objeto falso que simula o comportamento de um objeto real.
     @Mock
     private AdocaoRepository adocaoRepository;
+
+    @Mock
+    private TutorRepository tutorRepository;
+
     @Mock
     private SolicitacaoAdocaoDto dto;
 
@@ -57,6 +63,6 @@ class ValidacaoPetComAdocaoEmAndamentoTest {
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
-        Assertions.assertThrows(ValidacaoException.class, () -> validacaoPetComAdocaoEmAndamento.validar(dto)); // O método assertThrows verifica se o método passado como parâmetro lança uma exceção, se lançar o teste passa, se não lançar o teste falha.
+        assertThrows(ValidacaoException.class, () -> validacaoPetComAdocaoEmAndamento.validar(dto)); // O método assertThrows verifica se o método passado como parâmetro lança uma exceção, se lançar o teste passa, se não lançar o teste falha.
     }
 }

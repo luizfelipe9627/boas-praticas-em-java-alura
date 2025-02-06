@@ -49,8 +49,8 @@ public class AdocaoService {
 
     // O método solicitar é responsável por registrar uma solicitação de adoção no sistema, recebendo um objeto do tipo SolicitacaoAdocaoDto como parâmetro.
     public void solicitar(SolicitacaoAdocaoDto dto) {
-        Pet pet = petRepository.getReferenceById(dto.idPet()); // O método findById do repositório é utilizado para buscar um pet pelo idAbrigo.
-        Tutor tutor = tutorRepository.getReferenceById(dto.idTutor()); // O método findById do repositório é utilizado para buscar um tutor pelo idAbrigo.
+        Pet pet = petRepository.getReferenceById(dto.idPet()); // O método findById do repositório é utilizado para buscar um pet pelo idPet.
+        Tutor tutor = tutorRepository.getReferenceById(dto.idTutor()); // O método findById do repositório é utilizado para buscar um tutor pelo idPet.
 
         validacoes.forEach(validacao -> validacao.validar(dto)); // O método forEach é utilizado para percorrer a lista de validações e chamar o método validar de cada validação.
 
@@ -68,7 +68,7 @@ public class AdocaoService {
 
     // O método aprovar é responsável por aprovar uma solicitação de adoção, recebendo um objeto do tipo AprovacaoAdocaoDto como parâmetro.
     public void aprovar(AprovacaoAdocaoDto dto) {
-        Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao()); // O método findById do repositório é utilizado para buscar uma adoção pelo idAbrigo.
+        Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao()); // O método findById do repositório é utilizado para buscar uma adoção pelo idPet.
         adocao.marcarComoAprovado(); // O método marcarComoAprovado é chamado para marcar a adoção como aprovada.
 
         // O método enviarEmail do emailService é utilizado para enviar um e-mail ao tutor informando que a adoção foi aprovada.
@@ -81,7 +81,7 @@ public class AdocaoService {
 
     // O método reprovar é responsável por reprovar uma solicitação de adoção, recebendo um objeto do tipo ReprovacaoAdocaoDto como parâmetro.
     public void reprovar(ReprovacaoAdocaoDto dto) {
-        Adocao adocao = adocaoRepository.getReferenceById(dto.idAdocao()); // O método findById do repositório é utilizado para buscar uma adoção pelo idAbrigo.
+        Adocao adocao = adocaoRepository.getReferenceById(dto.id()); // O método findById do repositório é utilizado para buscar uma adoção pelo idPet.
         adocao.marcarComoReprovado(dto.justificativa()); // O método marcarComoReprovado é chamado para marcar a adoção como reprovada.
 
         // O método enviarEmail do emailService é utilizado para enviar um e-mail ao tutor informando que a adoção foi reprovada.

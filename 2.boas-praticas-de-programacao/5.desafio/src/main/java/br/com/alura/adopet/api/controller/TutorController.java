@@ -4,7 +4,7 @@ import br.com.alura.adopet.api.dto.AtualizacaoTutorDto;
 import br.com.alura.adopet.api.dto.CadastroTutorDto;
 import br.com.alura.adopet.api.service.TutorService;
 import jakarta.validation.Valid;
-import jakarta.validation.ValidationException;
+import br.com.alura.adopet.api.exception.ValidacaoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +31,7 @@ public class TutorController {
         try {
             tutorService.cadastrar(dto); // O método cadastrar do serviço é utilizado para cadastrar o tutor no banco de dados.
             return ResponseEntity.ok().build(); // A resposta da requisição é uma mensagem de sucesso.
-        } catch (ValidationException e) {
+        } catch (ValidacaoException e) {
             return ResponseEntity.badRequest().build(); // A resposta da requisição é uma mensagem de erro.
         }
     }
@@ -47,7 +47,7 @@ public class TutorController {
         try {
             tutorService.atualizar(dto); // O método atualizar do serviço é utilizado para atualizar o tutor no banco de dados.
             return ResponseEntity.ok().build(); // A resposta da requisição é uma mensagem de sucesso.
-        } catch (ValidationException e) {
+        } catch (ValidacaoException e) {
             return ResponseEntity.badRequest().build(); // A resposta da requisição é uma mensagem de erro.
         }
     }

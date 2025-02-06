@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 public record AtualizacaoTutorDto(
         // A anotação @Id indica que o atributo é a chave primária.
         @Id
-        Long idTutor, // O idTutor é o identificador do tutor.
+        Long id, // O idPet é o identificador do tutor.
         // A anotação @NotBlank indica que o atributo não pode ser vazio.
         @NotBlank
         String nome, // O nome é o nome do tutor.

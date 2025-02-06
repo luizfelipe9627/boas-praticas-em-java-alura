@@ -5,26 +5,35 @@ import br.com.alura.adopet.api.dto.PetDto;
 import br.com.alura.adopet.api.model.Abrigo;
 import br.com.alura.adopet.api.model.Pet;
 import br.com.alura.adopet.api.repository.PetRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+// A anotação @Service indica que a classe é um serviço, ou seja, uma classe que contém a lógica de negócio da aplicação.
 @Service
 public class PetService {
 
+    // A anotação @Autowired injeta uma instância de AbrigoRepository no atributo repository.
     @Autowired
-    private PetRepository repository;
+    private PetRepository petRepository; // O atributo petRepository é do tipo PetRepository e será utilizado para acessar os métodos de persistência de dados.
 
-    public List<PetDto> buscarPetsDisponiveis() {
-        return repository
-                .findAllByAdotadoFalse()
-                .stream()
-                .map(PetDto::new)
-                .toList();
+    // O método listarTodos é responsável por listar todos os pets disponíveis.
+    public List<PetDto> listar() {
+        // Retorna a lista de pets disponíveis.
+        return petRepository
+                .findAllByAdotadoFalse() // O método findAllByAdotadoFalse é chamado para buscar todos os pets não adotados.
+                .stream() // O stream é utilizado para percorrer a lista de pets.
+                .map(PetDto::new) // O map é utilizado para converter os pets em PetDto.
+                .toList(); // O toList é utilizado para converter o stream em uma lista.
     }
 
-    public void cadastrarPet(Abrigo abrigo, CadastroPetDto dto) {
-        repository.save(new Pet(dto, abrigo));
+    // O método cadastrar é responsável por cadastrar um pet em um abrigo, recebendo um abrigo e um DTO de cadastro de pet.
+    public void cadastrar(Abrigo abrigo, CadastroPetDto dto) {
+        petRepository.save(new Pet(abrigo, dto)); // O método save do repositório é chamado para salvar o pet no banco de dados.
     }
+
 }

@@ -48,9 +48,9 @@ public class AbrigoService {
         abrigoRepository.save(new Abrigo()); // O método save do repositório é utilizado para salvar o abrigo no banco de dados.
     }
 
-    // O método listar é responsável por listar os pets de um abrigo, recebendo um idAbrigo ou nome do abrigo como parâmetro.
+    // O método listar é responsável por listar os pets de um abrigo, recebendo um idPet ou nome do abrigo como parâmetro.
     public List<PetDto> listar(String idOuNome) {
-        Abrigo abrigo = carregarAbrigo(idOuNome); // O método carregarAbrigo é chamado para carregar o abrigo pelo idAbrigo ou nome.
+        Abrigo abrigo = carregarAbrigo(idOuNome); // O método carregarAbrigo é chamado para carregar o abrigo pelo idPet ou nome.
 
         // Retorna a lista de pets do abrigo.
         return petRepository
@@ -60,13 +60,13 @@ public class AbrigoService {
                 .toList();  // O toList é utilizado para converter o stream em uma lista.
     }
 
-    // O método adotarPet é responsável por adotar um pet, recebendo um idAbrigo ou nome do abrigo e um idAbrigo do pet como parâmetro.
+    // O método adotarPet é responsável por adotar um pet, recebendo um idPet ou nome do abrigo e um idPet do pet como parâmetro.
     public Abrigo carregarAbrigo(String idOuNome) {
         Optional<Abrigo> optional; // Cria uma variável optional do tipo Optional<Abrigo>.
 
         try {
             Long id = Long.parseLong(idOuNome); // O método parseLong é utilizado para converter a string idOuNome em um número do tipo Long.
-            optional = abrigoRepository.findById(id); // O método findById do repositório é utilizado para buscar um abrigo pelo idAbrigo.
+            optional = abrigoRepository.findById(id); // O método findById do repositório é utilizado para buscar um abrigo pelo idPet.
         } catch (NumberFormatException e) {
             optional = Optional.ofNullable(abrigoRepository.findByNome(idOuNome)); // O método findByNome do repositório é utilizado para buscar um abrigo pelo nome.
         }

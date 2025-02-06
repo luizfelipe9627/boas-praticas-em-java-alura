@@ -31,7 +31,7 @@ class PetServiceTest {
     // O método abaixo é um teste responsável por verificar se está sendo listado todos os pets disponíveis.
     void deveriaBuscarPetsDisponiveis() {
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
-        petService.buscarPetsDisponiveis(); // Está chamando o método buscarPetsDisponiveis() do serviço.
+        petService.listar(); // Está chamando o método listar do serviço.
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
         // O método then() verifica se o método findAll() foi chamado no repositório.
@@ -43,9 +43,9 @@ class PetServiceTest {
     // O método abaixo é um teste responsável por verificar se está sendo cadastrado um pet.
     void deveriaCadastrarPet() {
         // ACT -> ACT é uma ação, que é a parte responsável por chamar o método que será testado.
-        petService.cadastrarPet(abrigo, dto); // Está chamando o método cadastrarPet() do serviço passando o abrigo e o dto.
+        petService.cadastrar(abrigo, dto); // Está chamando o método cadastrar do serviço passando o abrigo e o dto.
 
         // ASSERT -> ASSERT é a parte responsável por verificar se o resultado obtido é o esperado.
-        then(petRepository).should().save(new Pet(dto, abrigo)); // Verifica se o método save foi chamado no petRepository passando um novo Pet com o dto e o abrigo se sim, o teste passa.
+        then(petRepository).should().save(new Pet(abrigo, dto)); // Verifica se o método save foi chamado no petRepository passando um novo Pet com o dto e o abrigo se sim, o teste passa.
     }
 }
