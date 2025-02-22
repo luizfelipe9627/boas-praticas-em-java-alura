@@ -28,8 +28,12 @@ public class Abrigo {
     @OneToMany(mappedBy = "abrigo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Pet> pets; // Criado um atributo pets do tipo List<Pet> responsável por armazenar os pets do abrigo.
 
-    // O construtor vazio da classe Abrigo é utilizado pelo Hibernate para criar instâncias da classe.
-    public Abrigo(CadastroAbrigoDto abrigoFeliz) {
+
+    // O construtor da classe Abrigo recebe um objeto CadastroAbrigoDto quando é instanciado.
+    public Abrigo(CadastroAbrigoDto abrigo) {
+        this.nome = abrigo.nome(); // O atributo nome do abrigo recebe o nome do abrigo.
+        this.telefone = abrigo.telefone(); // O atributo telefone do abrigo recebe o telefone do abrigo.
+        this.email = abrigo.email(); // O atributo email do abrigo recebe o email do abrigo.
     }
 
     // O construtor vazio da classe Abrigo é utilizado pelo Hibernate para criar instâncias da classe.
